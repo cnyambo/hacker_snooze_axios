@@ -50,3 +50,25 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+
+
+/** Add a new Story on the list. */
+
+async function postStoriesOnPage(evt) {
+  evt.preventDefault();
+  console.debug("postStoriesOnPage");
+  const author = $('#author-data').val();
+  const title = $('#title-data').val();
+  const url = $('#url-data').val();
+  const data = {title, url, author };
+  const newStory = await storyList.addStory(currentUser,  data);
+  $allStoriesList.prepend(newStory);
+  $submitStory.toggle();
+  $submitStory.trigger("reset");
+  //location.reload(); 
+  //console.log(newStory);
+  //return newStory;
+}
+
+$submitStory.on("submit", postStoriesOnPage);

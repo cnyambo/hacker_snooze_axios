@@ -76,13 +76,15 @@ class StoryList {
 
   async addStory( user, {title, author, url} ) {
     // UNIMPLEMENTED: complete this function!
-    const newUser = await axios.post(`${BASE_URL}/stories`,
+    const newStory = await axios.post(`${BASE_URL}/stories`,
     {
       token: user.loginToken,
-      story:{ title: title, author: author, url: url}
+      story:{ author: author, title: title,  url: url}
      
     });
-    console.log(newUser);
+    const story = new Story(newStory);
+    return story;
+    
   }
 }
 
@@ -152,6 +154,7 @@ class User {
    */
 
   static async login(username, password) {
+
     const response = await axios({
       url: `${BASE_URL}/login`,
       method: "POST",
@@ -159,6 +162,16 @@ class User {
     });
 
     let { user } = response.data;
+    //console.log('test');
+
+    //
+    //Hide the login and register pages
+    hidePageComponents();
+    navShowLinks();
+    //add the add new story link, favorite and  my stories link
+
+    
+
 
     return new User(
       {
@@ -170,6 +183,7 @@ class User {
       },
       response.data.token
     );
+
   }
 
   /** When we already have credentials (token & username) for a user,

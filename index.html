@@ -35,8 +35,13 @@
 
 <!-- top navigation bar -->
 <nav>
-  <div class="navbar-brand">
+  <div class="navbar-brand" id="top">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+  </div>
+  <div class="nav-hidden-links hidden"  > 
+    |<a class="story-link" href="#" id="submit">submit</a>
+    |<a class="story-link" href="#" id="favorites">favorites</a>
+    |<a class="story-link" href="#" id="myStories">my stories</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -47,7 +52,24 @@
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
-
+ 
+<form action="" id="stories-form" class="hidden">
+    <div>
+      <label for="author-data">author</label>
+      <input id="author-data" type="text" placeholder="author name">
+    </div>
+    <div>
+      <label for="title-data">title</label>
+      <input id="title-data" type="text" placeholder="story title">
+    </div>
+    <div>
+      <label for="url-data">title</label>
+      <input id="url-data" type="text" placeholder="story url">
+    </div>      
+  <button type="submit" id="add-story">submit</button>
+  <hr>
+</form>
+  
   <!-- loading message (removed by JS after stories loaded) -->
   <div id="stories-loading-msg">Loading&hellip;</div>
 
