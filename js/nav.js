@@ -9,7 +9,9 @@
 function navAllStories(evt) {
   console.debug("navAllStories", evt);
   hidePageComponents();
-  putStoriesOnPage();
+  putStoriesOnPageWithRankIcon();
+ 
+  
 }
 
 $body.on("click", "#nav-all", navAllStories);
@@ -33,17 +35,8 @@ function updateNavOnLogin() {
   $navLogin.hide();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
+  putStoriesOnPageWithRankIcon();
 }
-
-
-/** put stories on a page */
-
-function navDisplayStories(evt) {
-  console.debug("navDisplayStories", evt);
-  hidePageComponents();
-  putStoriesOnPage() ;
-}
-$body.on("click", "#nav-all", navAllStories);
 
 /** Show submit link on "login" */
 
@@ -64,3 +57,27 @@ function navAddStory(evt) {
  
 }
 $submitLink.on("click", navAddStory);
+
+
+/** Show add story form */
+
+function navMarkClick(evt) {
+  console.debug("navMarkClick", evt);
+  hidePageComponents();
+  //$allStoriesList.show();
+  //$submitStory.show();
+  //https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+}
+
+
+/** Show my stories form */
+
+function navMyStory(evt) {
+  console.debug("navMyStory", evt);
+  hidePageComponents();
+  
+  getAndShowMyStories();
+ 
+}
+$myStories.on("click", navMyStory);
+ 

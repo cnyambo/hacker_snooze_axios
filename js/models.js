@@ -67,6 +67,7 @@ class StoryList {
     return new StoryList(stories);
   }
 
+
   /** Adds story data to API, makes a Story instance, adds it to story list.
    * - user - the current instance of User who will post the story
    * - obj of {title, author, url}
@@ -164,14 +165,9 @@ class User {
     let { user } = response.data;
     //console.log('test');
 
-    //
     //Hide the login and register pages
-    hidePageComponents();
+    //hidePageComponents();
     navShowLinks();
-    //add the add new story link, favorite and  my stories link
-
-    
-
 
     return new User(
       {

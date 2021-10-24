@@ -23,6 +23,7 @@ function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+   
   return $(`
       <li id="${story.storyId}">
         <a href="${story.url}" target="a_blank" class="story-link">
@@ -72,3 +73,56 @@ async function postStoriesOnPage(evt) {
 }
 
 $submitStory.on("submit", postStoriesOnPage);
+
+
+/** Gets list of stories from server, generates their HTML, and puts on page. Add the star */
+
+function putStoriesOnPageWithRankIcon() {
+  console.debug("putStoriesOnPageWithRankIcon");
+  
+  $allStoriesList.empty();
+  
+  console.log(storyList);
+  // loop through all of our stories and generate HTML for them
+  for (let story of storyList.stories) {
+    const $story = generateStoryMarkup(story);
+
+    //add star icone
+    const $star = $(`<a href="#" id="${story.storyId}"></a>`).append(`<i class="bi bi-star"></i>`);
+     //console.log($('#star'));
+     const id = story.storyId;
+     const $mark= $(`#${id}`);
+     //console.log(story.url);
+    //prepend the star icon in front of the story
+    
+    $story.prepend($star);
+
+    //append the story on the body
+    $allStoriesList.append($story);
+
+    //call on click
+    $mark.on("click", navMarkClick);
+  }
+
+  $allStoriesList.show();
+}
+
+
+/** Get and show stories when site first loads. */
+
+async function getAndShowMyStories() {
+  
+  storyList = currentUser.ownStories;
+  //$storiesLoadingMsg.remove();
+  $allStoriesList.empty();
+
+  // loop through all of our stories and generate HTML for them
+  for (let story of storyList) {
+    const $story = generateStoryMarkup(story);
+    $allStoriesList.append($story);
+  }
+
+  $allStoriesList.show(); 
+  console.log(storyList.length);
+  //$storiesLoadingMsg.remove();
+}

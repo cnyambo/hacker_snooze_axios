@@ -5,8 +5,11 @@
 const $body = $("body");
 
 const $topDiv = $("#top");
+const $navLink = $('#nav-all');
 
 const $hiddenLinks = $(".nav-hidden-links");
+const $starIcon = $('#rank_icon');
+ 
 
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
@@ -20,6 +23,8 @@ const $navLogOut = $("#nav-logout");
 
 const $submitStory = $("#stories-form");
 const $submitLink = $("#submit"); 
+const $myStories = $("#myStories");
+
 
 //const $navUserProfile = $("#nav-user-profile");
 //const $navLogOut = $("#nav-logout");
