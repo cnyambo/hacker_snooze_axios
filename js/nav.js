@@ -75,9 +75,8 @@ function navMarkClick(evt) {
 function navMyStory(evt) {
   console.debug("navMyStory", evt);
   hidePageComponents();
-  
   getAndShowMyStories();
- 
+  
 }
 $myStories.on("click", navMyStory);
  

@@ -60,15 +60,15 @@
 <form action="" id="stories-form" class="hidden">
     <div>
       <label for="author-data">author</label>
-      <input id="author-data" type="text" placeholder="author name">
+      <input id="author-data" type="text" placeholder="author name" required>
     </div>
     <div>
       <label for="title-data">title</label>
-      <input id="title-data" type="text" placeholder="story title">
+      <input id="title-data" type="text"  placeholder="story title" required>
     </div>
     <div>
-      <label for="url-data">title</label>
-      <input id="url-data" type="text" placeholder="story url">
+      <label for="url-data">url</label>
+      <input id="url-data" type="url" placeholder="story url" required>
     </div>      
   <button type="submit" id="add-story">submit</button>
   <hr>
@@ -85,6 +85,7 @@
   </div>-->
   
   <ol id="all-stories-list" class="stories-list"></ol>
+  <ol id="my-stories-list" class="stories-list"></ol>
 
 </section>
 
@@ -96,11 +97,11 @@
     <h4>Login</h4>
     <div class="login-input">
       <label for="login-username">username</label>
-      <input id="login-username" autocomplete="current-username">
+      <input id="login-username" autocomplete="current-username" required>
     </div>
     <div class="login-input">
       <label for="login-password">password</label>
-      <input id="login-password" type="password" autocomplete="current-password">
+      <input id="login-password" type="password" autocomplete="current-password" required>
     </div>
     <button type="submit">login</button>
     <hr>

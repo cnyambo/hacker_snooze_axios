@@ -13,6 +13,7 @@ const $starIcon = $('#rank_icon');
 
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
+const $stories = $("#my-stories-list");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
@@ -36,6 +37,7 @@ const $myStories = $("#myStories");
 function hidePageComponents() {
   const components = [
     $allStoriesList,
+    $stories,
     $submitStory,
     $loginForm,
     $signupForm,

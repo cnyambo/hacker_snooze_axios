@@ -2,6 +2,8 @@
 
 // This is the global list of the stories, an instance of StoryList
 let storyList;
+let myStoryList;
+let rankIds=[];
 
 /** Get and show stories when site first loads. */
 
@@ -63,10 +65,14 @@ async function postStoriesOnPage(evt) {
   const title = $('#title-data').val();
   const url = $('#url-data').val();
   const data = {title, url, author };
-  const newStory = await storyList.addStory(currentUser,  data);
-  $allStoriesList.prepend(newStory);
+  console.log(data);
+ const newStory = await storyList.addStory(currentUser,  data);
+  console.log(data,newStory);
   $submitStory.toggle();
   $submitStory.trigger("reset");
+  
+   /*
+;*/
   //location.reload(); 
   //console.log(newStory);
   //return newStory;
@@ -82,17 +88,20 @@ function putStoriesOnPageWithRankIcon() {
   
   $allStoriesList.empty();
   
-  console.log(storyList);
+  //console.log(storyList);
   // loop through all of our stories and generate HTML for them
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
 
     //add star icone
-    const $star = $(`<a href="#" id="${story.storyId}"></a>`).append(`<i class="bi bi-star"></i>`);
-     //console.log($('#star'));
-     const id = story.storyId;
-     const $mark= $(`#${id}`);
-     //console.log(story.url);
+    const $star = $(`<a href="#" id="${story.storyId}-a" ><i class="bi bi-star" ></i></a>`)//.append(``);
+ 
+ 
+    rankIds.push(`${story.storyId}-a`)  ;
+
+     
+     //const $mark= document.getElementById($id);
+     //console.log($id);
     //prepend the star icon in front of the story
     
     $story.prepend($star);
@@ -100,8 +109,10 @@ function putStoriesOnPageWithRankIcon() {
     //append the story on the body
     $allStoriesList.append($story);
 
+
+    
     //call on click
-    $mark.on("click", navMarkClick);
+   // $mark.on("click", navMarkClick);
   }
 
   $allStoriesList.show();
@@ -112,17 +123,35 @@ function putStoriesOnPageWithRankIcon() {
 
 async function getAndShowMyStories() {
   
-  storyList = currentUser.ownStories;
+  myStoryList = currentUser.ownStories;
   //$storiesLoadingMsg.remove();
-  $allStoriesList.empty();
+  //$stories.empty();
 
   // loop through all of our stories and generate HTML for them
-  for (let story of storyList) {
+  for (let story of myStoryList) {
     const $story = generateStoryMarkup(story);
-    $allStoriesList.append($story);
+    $stories.append($story);
   }
 
-  $allStoriesList.show(); 
-  console.log(storyList.length);
+  $stories.show(); 
+  console.log($stories);
   //$storiesLoadingMsg.remove();
 }
+//console.log(rankIds);
+
+/*function rankStory()
+{
+  for(let ids of rankIds)
+  {
+    const $rank =document.getElementById(`${ids}`);
+    console.log($rank)
+    /*$rank.on("click",  async function handleEpisodeClick(evt) {
+      console.log(evt)
+       
+    }); 
+
+  }
+
+}*/
+
+
